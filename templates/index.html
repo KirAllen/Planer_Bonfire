@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KIR Planer</title>
+    <link rel="stylesheet" href='/static/style.css' />
+    <link rel="shortcut icon" href="/static/icon.png" />
+</head>
+<body>
+    <header class="header">
+        <div class="wrapper">
+
+            <div class="header__wrapper">
+                <div class="headder__logo">
+                    <a href="/" class="header__logo-link">
+                        <img src="/static/BONFIRE.svg" alt="Bonfire" class="header__logo-pic">
+                    </a>
+                </div>
+    
+                <nav class="header__nav">
+                    <ul class="header__list">
+                        <li class="header__item">
+                            <a href="{{ url_for('create_tasks') }}" class="header_link">Create Task</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('tasks') }}" class="header_link">Tasks</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('calendar') }}" class="header_link">Calendar</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('enter') }}" class="header_link">ENTER</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('logout') }}" class="header_link">LOGOUT</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="intro">
+            <div class="wrapper">
+                <h1 class="intro__title">
+                    WHEN EVERY TASK IS ON FIRE, JUST USE THE BONFIRE!  
+                </h1>
+                <p class="intro__subtitle">
+                    Всё горит, а  ты все ещё лежишь на диване??? 
+                    Наш планер не даст просрочить дедлайны и подарит тебе незабываемые ощущения тревожности и ОКР!!!! 
+                </p>
+                    <a  href="{{ url_for('log') }}" class="start__submit">начать впахивать</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

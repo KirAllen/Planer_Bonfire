@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KIR Planer</title>
+    <link rel="stylesheet" href='/static/style.css' />
+    <link rel="shortcut icon" href="/static/icon.png" />
+</head>
+<style>
+    body {
+        background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url('/static/LandScape.jpg');
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: sans-serif;
+    }
+</style>
+<body>
+    <header class="header">
+        <div class="wrapper">
+
+            <div class="header__wrapper">
+                <div class="headder__logo">
+                    <a href="/" class="header__logo-link">
+                        <img src="/static/BONFIRE.svg" alt="Bonfire" class="header__logo-pic">
+                    </a>
+                </div>
+
+                <nav class="header__nav">
+                    <ul class="header__list">
+                        <li class="header__item">
+                            <a href="{{ url_for('create_tasks') }}" class="header_link">Create Task</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('tasks') }}" class="header_link">Tasks</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('calendar') }}" class="header_link">Calendar</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('enter') }}" class="header_link">ENTER</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('logout') }}" class="header_link">LOGOUT</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <br>
+    <br>
+    <div class="row">
+        {% for task in tasks %}
+            <div class="task">
+                <div class="title">
+                    Task: {{ task. title }}</p>
+                    <br>
+                    <div class="content">
+                        Description: {{ task.content }}</p>
+                        <br>
+                        <div class="start">
+                            Start: {{ task.start }}</p>
+                         <br>
+                            <div class="deadline">
+                                DeadLine: {{ task.deadline }}</p>
+                                <a href="/tasks/{{ task.id }}/del" class="done">Done</a>
+                                <a href="/tasks/{{ task.id }}/change" class="change">Change</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        {% endfor %}
+    </div>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

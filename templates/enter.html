@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Autorization</title>
+	<link rel="stylesheet" href="/static/style_portal.css">
+    <link rel="shortcut icon" href="/static/icon.png" />
+</head>
+<body>
+	<header class="header">
+        <div class="wrapper">
+
+            <div class="header__wrapper">
+                <div class="headder__logo">
+                    <a href="/" class="header__logo-link">
+                        <img src="/static/BONFIRE.svg" alt="Bonfire" class="header__logo-pic">
+                    </a>
+                </div>
+    
+                <nav class="header__nav">
+                    <ul class="header__list">
+                        <li class="header__item">
+                            <a href="{{ url_for('create_tasks') }}" class="header_link">Create Task</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('tasks') }}" class="header_link">Tasks</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('calendar') }}" class="header_link">Calendar</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('enter') }}" class="header_link">ENTER</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('logout') }}" class="header_link">LOGOUT</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <br>
+	<div class="form">
+		<form method="POST" action="{{ url_for('enter') }}" class="input-form">
+
+			{{ form.csrf_token }}
+			<p>
+				{{ form.username.label }}<br>
+				{{ form.username }}
+			</p>
+			<p>
+				{{ form.password.label }}<br>
+				{{ form.password }}
+			</p>
+			<p>
+				<input type="submit" value="Login" class="btn">
+			</p>
+			<a href="{{ url_for('log') }}" class="registration">Registration</a>
+		</form>
+	</div>
+
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

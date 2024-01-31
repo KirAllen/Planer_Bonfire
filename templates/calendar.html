@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
+    <title>KIR Planer</title>
+    <link rel="stylesheet" href='/static/style.css' />
+    <link rel="shortcut icon" href="/static/icon.png" />
+</head>
+<style>
+    body {
+        background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url('/static/LandScape.jpg');
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: sans-serif;
+    }
+  </style>
+<body>
+    <header class="header">
+        <div class="wrapper">
+
+            <div class="header__wrapper">
+                <div class="headder__logo">
+                    <a href="/" class="header__logo-link">
+                        <img src="/static/BONFIRE.svg" alt="Bonfire" class="header__logo-pic">
+                    </a>
+                </div>
+    
+                <nav class="header__nav">
+                    <ul class="header__list">
+                        <li class="header__item">
+                            <a href="{{ url_for('create_tasks') }}" class="header_link">Create Task</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('tasks') }}" class="header_link">Tasks</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('calendar') }}" class="header_link">Calendar</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('enter') }}" class="header_link">ENTER</a>
+                        </li>
+                        <li class="header__item">
+                            <a href="{{ url_for('logout') }}" class="header_link">LOGOUT</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <br>
+    <div class="cal">
+        <div id="calendar"></div>
+    </div>
+    <script>
+            let calendarEl = document.getElementById('calendar');
+
+            let calendar = new FullCalendar.Calendar (calendarEl, {
+                events : [
+                {% for task in tasks %}
+                {
+                    title: '{{ task.title }}',
+                    start: '{{ task.start }}',
+                    end: '{{ task.deadLine_calendar }}',
+                },
+                {% endfor %}
+                ]
+            });
+
+            calendar.render(); 
+
+    </script>
+</body>
+</html>
